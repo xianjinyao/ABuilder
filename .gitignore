@@ -1,0 +1,9 @@
+output/*
+*.pyc
+*.iml
+.DS_Store
+.java.py
+.sql.py
+.cmd.py
+/.idea/
+tmp/*

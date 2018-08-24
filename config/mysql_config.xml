@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 配置管理器 -->
+<configuration>
+    <!-- 配置数据库连接信息 -->
+    <database>
+        <alias>test</alias>
+        <connect-url></connect-url>
+        <port></port>
+        <db></db>
+        <username></username>
+        <password></password>
+        <charset></charset>
+    </database>
+</configuration>
