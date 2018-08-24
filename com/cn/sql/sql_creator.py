@@ -92,24 +92,25 @@ class CreateQuerySQL:
     def convert(self, property_name):
         return property_kit.camel_case2under_score_case(property_name)
 
-    def need_property(self, *property):
+    def property(self, *property):
         obj = self.clone()
         self.properties_list.extend(list(map(lambda str: self.convert(str), property)))
         return obj
 
-    def need_cond(self, **cond_map):
+    def cond(self, **cond_map):
         obj = self.clone()
-        cond_map = dict(zip(list(map(lambda str: obj.convert(str), cond_map.keys())), list(map(lambda i: str(i), cond_map.values()))))
+        _cond_map = dict(zip(list(map(lambda str: obj.convert(str), cond_map.keys())),
+                            list(map(lambda s: str(s) if type(s) == int else "\"" + s + "\"", cond_map.values()))))
         if obj.cond_map is None:
-            obj.cond_map = dict(cond_map)
+            obj.cond_map = _cond_map
         else:
-            if type(obj.cond_map) == 'dict':
-                obj.cond_map = dict(obj.cond_map, **cond_map)
+            if type(obj.cond_map) == dict:
+                obj.cond_map = dict(obj.cond_map, **_cond_map)
             else:
-                obj.cond_map = cond_map.copy()
+                obj.cond_map = _cond_map
         return obj
 
-    def need_group(self, *group):
+    def group_by(self, *group):
         obj = self.clone()
         if obj.group_by_list is None:
             obj.group_by_list = []
@@ -119,7 +120,7 @@ class CreateQuerySQL:
     '''
     1 for asc, 0 for desc
     '''
-    def need_order(self, **order_map):
+    def order_by(self, **order_map):
         obj = self.clone()
         if obj.order_by_map is None:
             obj.order_by_map = dict()
@@ -131,7 +132,7 @@ class CreateQuerySQL:
     limit need a tuple ( from, count ), and offset need a int
     PS: if you use offset, please set limit int
     '''
-    def need_limit_offset(self, limit=(), offset=0):
+    def limit_offset(self, limit=(), offset=0):
         obj = self.clone()
         if type(limit) != tuple:
             limit = (int(limit),)

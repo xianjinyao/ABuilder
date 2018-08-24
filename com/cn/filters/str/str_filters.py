@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 '''
 @author jinyao.xian
+@filename str_filters.py
 '''
 
 from com.cn.utils.property_kit import camel_case2under_score_case

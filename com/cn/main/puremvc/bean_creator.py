@@ -114,4 +114,4 @@ def save_bean_java(package_path, db_name, table_name):
 
 if __name__ == "__main__":
     print(path_kit.is_file("templates/bean.java"))
-    # print_bean_java("com.cn", "aptp", "delivery_note_item")
+    # print_bean_java("com.cn", "", "")

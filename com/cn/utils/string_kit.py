@@ -22,3 +22,11 @@ def is_valid(str):
 
 def str_join(str_list, pattern):
     return pattern.join(str_list)
+
+
+def map2str(map):
+    list = []
+    for key, value in map.items():
+        str = "\"%s\": " % key + ("%d" % value if type(value) == int else "\"%s\"" % value)
+        list.append(str)
+    return "{" + str_join(list, ", ") + "}"
