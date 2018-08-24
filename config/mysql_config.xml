@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 配置管理器 -->
+<!-- Configuration manager -->
 <configuration>
-    <!-- 配置数据库连接信息 -->
+    <!-- Config database connection info -->
     <database>
         <alias>test</alias>
         <connect-url></connect-url>
